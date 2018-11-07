@@ -1,0 +1,64 @@
+server:
+ port: 8222
+eureka:
+     client:
+       serviceUrl:
+        defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+     instance:
+       preferIpAddress: true
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: ecommerce-payment-v2
+  application:
+     name: demo-payment-v2
+  cloud:
+     stream:
+       default-binder: kafka
+       kafka:
+         binder:
+           brokers: localhost:9092
+       bindings:
+         payment-order-input:
+           destination: app.order.v2
+           group: user-group
+           contentType: 'application/json'
+         payment-order-output:
+           destination: order.update.v2
+           group: user-group
+           contentType: 'application/json'
+         payment-customer-input:
+           destination: transaction.response.customer.v2
+           group: user-group
+           contentType: 'application/json'
+         payment-customer-output:
+           destination: customer.update.balance.v2
+           group: user-group
+           contentType: 'application/json'
+         order-aggregator-output:
+           destination: order.aggregator.update
+           group: user-group
+           contentType: 'application/json'
+         update-product:
+           destination: update.payment.v2
+           contentType: 'application/json'
+                       
+#    stream:
+#      bindings:
+#        order:
+#          destination: app.order
+#          group: user-group
+#          contentType: 'application/json'
+#      binders:
+#        local_activemq:
+#          type: activemq
+#          environment:
+#            spring:
+#              activemq:
+#               host: localhost
+#               port: 61616
+#               username: admin
+#               password: admin

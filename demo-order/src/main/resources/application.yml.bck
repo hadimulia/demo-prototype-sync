@@ -1,0 +1,63 @@
+server:
+  port: 9111
+
+eureka:
+     client:
+       serviceUrl:
+        defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+     instance:
+       preferIpAddress: true
+
+spring:
+   data:
+     mongodb:
+      host: localhost
+      port: 27017
+      database: ecommerce-order
+   application:
+    name: demo-order
+   cloud:
+    stream:
+      default-binder: kafka
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        output:
+          destination: app.order
+          contentType: 'application/json'
+        order-input:
+          destination: order.update
+          contentType: 'application/json' 
+        customer-output:
+          destination: customer.find.id.v1
+          contentType: 'application/json'
+        order-aggregator-output:
+           destination: order.aggregator.update
+           group: user-group
+           contentType: 'application/json'
+        product-output:
+           destination: get.info.from.order
+           contentType: 'application/json'
+        update-product-output:
+           destination: product.update
+           contentType: 'application/json'
+#   cloud:
+#    stream:
+#      bindings:
+#        output:
+#          destination: app.order
+#          contentType: 'application/json'
+#        order:
+#          destination: order.update
+#          contentType: 'application/json'
+#      binders:
+#        local_activemq:
+#          type: activemq
+#          environment:
+#            spring:
+#              activemq:
+#               host: localhost
+#               port: 61616
+#               username: admin
+#               password: admin

@@ -1,0 +1,14 @@
+#ActiveMQ Configuration
+#spring.activemq.broker-url=tcp://localhost:61616
+#spring.activemq.user=admin
+#spring.activemq.password=admin
+
+
+#AMQP RabbitMQ configuration 
+spring.rabbitmq.host=localhost	
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=guest
+spring.rabbitmq.password=guest
+
+#server.port=8081
+#server.servlet.context-path=/activemq

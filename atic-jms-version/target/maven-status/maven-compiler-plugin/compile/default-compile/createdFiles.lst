@@ -1,0 +1,13 @@
+com\ati\syd\spring\jms\annotations\ComponenJms.class
+sample\PersonneName.class
+sample\AddRunTimeAnnotation.class
+com\ati\syd\spring\jms\ConfigJmsVersion.class
+com\ati\syd\spring\jms\ListenerAMQP$Receiver.class
+com\ati\syd\spring\jms\Application.class
+com\ati\syd\spring\jms\reflection\ScannClassByPackage.class
+com\ati\syd\spring\jms\annotations\AnabaticBEVerison.class
+com\ati\syd\spring\jms\ListenerAMQP.class
+com\ati\syd\spring\jms\reflection\AddAnnotation.class
+com\ati\syd\spring\jms\annotations\MessageListener.class
+com\ati\syd\spring\jms\ConfigJmsVersion$1.class
+sample\SayHelloBean.class

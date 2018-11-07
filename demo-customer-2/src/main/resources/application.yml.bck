@@ -1,0 +1,41 @@
+server:
+ port: 0
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+spring:
+ application:
+    name: demo-customer-v2
+ data:
+  mongodb:
+   host: localhost
+   port: 27017
+   database: ecommerce-customer-2
+ cloud:
+    stream:
+      default-binder: kafka
+      kafka:
+        binder:
+         brokers: 10.2.49.105:9092
+      bindings:
+        output:
+          destination: customer.v2
+          contentType: 'application/json'
+        customer-get-info:
+          destination: customer.find.id.v2
+          contentType: 'application/json'
+        customer-send-info:
+          destination: order.aggregator.update
+          contentType: 'application/json'
+        customer.update.balance.v2:
+          destination: customer.update.balance.v2
+          contentType: 'application/json'
+        customer-transaction:
+          destination: transaction.response.customer.v2
+          contentType: 'application/json'
+        customer-rollback-balance:
+          destination: customer.rollback.balance
+          contentType: 'application/json'
